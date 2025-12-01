@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personaje | Portal IRB</title>
+    <link rel="stylesheet" href="css/personaje.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@800&display=swap" rel="stylesheet">
+    <script>
+      if (!localStorage.getItem("usuarioIRB")) {
+        window.location.href = "acceso.html";
+      }
+    </script>
+    
+</head>
+<body>
+  <div class="overlay"></div>
+  <header>
+    <a href="index.html" class="volver">← Volver al portal</a>
+    <h1>Generador de Personajes</h1>
+  </header>
+  <main>
+    <section class="intro">
+      <h2>Tu héroe personalizado</h2>
+      <img src="imgs/personaje.png" alt="Personaje" class="avatar">
+      <p>Fuerza: ---</p>
+      <p>Magia: ---</p>
+      <p>Velocidad: ---</p>
+      <button>Generar personaje</button>
+    </section>
+  </main>
+  <footer>
+    <p>© 2025 Portal IRB</p>
+  </footer>
+</body>
+</html>

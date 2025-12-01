@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clicker | Portal IRB</title>
+    <link rel="stylesheet" href="css/clicker.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@800&display=swap" rel="stylesheet">
+    <script>
+      if (!localStorage.getItem("usuarioIRB")) {
+        window.location.href = "acceso.html";
+      }
+    </script>
+    
+</head>
+<body>
+  <div class="overlay"></div>
+  <header>
+    <a href="index.html" class="volver">← Volver al portal</a>
+    <h1>Clicker</h1>
+  </header>
+  <main>
+    <section class="intro">
+      <h2>Entrena tus reflejos</h2>
+      <img src="imgs/mando.png" alt="Mando" class="avatar" id="mando">
+      <p>Haz clic en el mando lo más rápido que puedas.</p>
+      <div class="contador">
+        <span id="cps">0</span> clics/segundo
+      </div>
+    </section>
+  </main>
+  <footer>
+    <p>© 2025 Portal IRB</p>
+  </footer>
+
+  <script src="js/clicker.js"></script>
+</body>
+</html>

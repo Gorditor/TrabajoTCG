@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal IRB</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@800&display=swap" rel="stylesheet">
+    <script>
+      if (!localStorage.getItem("usuarioIRB")) {
+        window.location.href = "acceso.html";
+      }
+    </script>
+
+</head>
+<body>
+  <div class="overlay"></div>
+  <header>
+    <img src="imgs/logo.png" alt="Logo IRB" class="logo">
+    <h1>Portal IRB</h1>
+  </header>
+  <main>
+  <section class="intro">
+    <h2>Bienvenido a la Academia IRB</h2>
+    <p>Elige tu misión</p>
+    <div class="botones">
+      <a href="quiz.html">Quiz</a>
+      <a href="personaje.html">Generador de Personajes</a>
+      <a href="rpg.html">Modo RPG</a> 
+      <a href="clicker.html">Clicker</a>
+      <a href="ranking.html">Ranking</a>
+      <a href="perfil.html">Perfil</a>
+    </div>
+
+  </section>
+</main>
+  <footer>
+    <p>© 2025 Portal IRB</p>
+  </footer>
+</body>
+</html>

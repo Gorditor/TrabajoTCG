@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil | Portal IRB</title>
+    <link rel="stylesheet" href="css/perfil.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@800&display=swap" rel="stylesheet">
+    <script>
+      if (!localStorage.getItem("usuarioIRB")) {
+        window.location.href = "acceso.html";
+      }
+    </script>
+    
+</head>
+<body>
+  <div class="overlay"></div>
+  <header>
+    <a href="index.html" class="volver">← Volver al portal</a>
+    <h1>Perfil del Jugador</h1>
+  </header>
+  <main>
+    <section class="intro">
+      <h2>Bienvenido, <span id="usuario"></span></h2>
+      <div class="datos">
+        <p><strong>Correo:</strong> jordi@gmail.com</p>
+        <p><strong>Personaje creado:</strong> Sí</p>
+        <p><strong>Última conexión:</strong> 01/12/2025</p>
+      </div>
+
+      <div class="records">
+        <h3>Récords</h3>
+        <ul>
+          <li>Quiz: 8/10 respuestas correctas</li>
+          <li>Clicker: 12.5 clics/segundo</li>
+          <li>Ranking: Top 3</li>
+        </ul>
+      </div>
+
+      <div class="logros">
+        <h3>Logros desbloqueados</h3>
+        <ul>
+          <li>🏆 Primer inicio de sesión</li>
+          <li>⚡ Récord de velocidad en Clicker</li>
+          <li>📚 Quiz completado</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <p>© 2025 Portal IRB</p>
+  </footer>
+
+  <script>
+    // Mostrar el usuario guardado en localStorage
+    document.addEventListener("DOMContentLoaded", () => {
+      const usuario = localStorage.getItem("usuarioIRB");
+      document.getElementById("usuario").textContent = usuario;
+    });
+  </script>
+</body>
+</html>
