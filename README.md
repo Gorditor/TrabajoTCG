@@ -4,7 +4,7 @@
 
 He retocado el trabajo casi hasta el último momento pero como primera versión lo voy a dejar así.
 
-Antes de nada, me gustaría dar a entender que le faltan muchísimas funciones y cosas a este trabajo para que esté completo y tenga sentido. Hay muchos placeholders y funciones que aún no hacen nada y muy probablemente el trabajo final no se parezca en nada a lo que hay ahora. También lo he separado todo en diferentes css y está un poco mal organizado pero lo mejoraré. Los js los hice con copilot porque solo queria comprobar que se podia hacer para que no quedara tan feo asi que los cambiaré también.
+Antes de nada, me gustaría dar a entender que le faltan muchísimas funciones y cosas a este trabajo para que esté completo y tenga sentido. Hay muchos placeholders y funciones que aún no hacen nada y muy probablemente el trabajo final no se parezca en nada a lo que hay ahora. También lo he separado todo en diferentes css y está un poco mal organizado pero lo mejoraré. Los js los hice con copilot porque solo queria comprobar que se podia hacer para que no quedara tan feo asi que los cambiaré también. En los css y en pequeñas partes del html he usado copilot también para poder tener mi visión más rápido, todo esto lo cambiaré en la versión final.
 
 ## Estructura del proyecto
 
