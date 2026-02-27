@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // --- ELEMENTOS DEL DOM ---
   const pantallaInicio = document.getElementById("pantalla-inicio");
   const pantallaQuiz = document.getElementById("pantalla-quiz");
   const pantallaResultado = document.getElementById("pantalla-resultado");
@@ -21,30 +20,25 @@ document.addEventListener("DOMContentLoaded", () => {
   const resultadoTexto = document.getElementById("resultado-texto");
   const resultadoScore = document.getElementById("resultado-score");
 
-  // --- ESTADO ---
   let preguntas = [];
   let indiceActual = 0;
   let puntuacion = 0;
   let respondido = false;
 
-  // --- FUNCIONES DE PANTALLA ---
   function mostrar(seccion) {
     [pantallaInicio, pantallaQuiz, pantallaResultado, pantallaCarga, pantallaError]
       .forEach(s => s.classList.add("hidden"));
     seccion.classList.remove("hidden");
   }
 
-  // --- DECODIFICAR HTML ENTITIES (la API devuelve &amp; etc) ---
   function decode(str) {
     const txt = document.createElement("textarea");
     txt.innerHTML = str;
     return txt.value;
   }
 
-  // --- OBTENER PREGUNTAS DE LA API ---
   async function cargarPreguntas(cantidad) {
     mostrar(pantallaCarga);
-    // Categoría 15 = Video Games en OpenTriviaDB
     const url = `https://opentdb.com/api.php?amount=${cantidad}&category=15&type=multiple`;
     try {
       const res = await fetch(url);
@@ -63,21 +57,17 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // --- MOSTRAR PREGUNTA ACTUAL ---
   function mostrarPregunta() {
     respondido = false;
     const p = preguntas[indiceActual];
     const total = preguntas.length;
 
-    // Progreso
     progresoEl.textContent = `Pregunta ${indiceActual + 1} de ${total}`;
     puntuacionLiveEl.textContent = `✅ ${puntuacion}`;
     barraFill.style.width = `${((indiceActual) / total) * 100}%`;
 
-    // Pregunta
     preguntaTextoEl.textContent = decode(p.question);
 
-    // Mezclar respuestas
     const respuestas = [...p.incorrect_answers, p.correct_answer]
       .map(decode)
       .sort(() => Math.random() - 0.5);
@@ -92,7 +82,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // --- SELECCIONAR RESPUESTA ---
   function seleccionarRespuesta(btnSeleccionado, respuesta, correcta) {
     if (respondido) return;
     respondido = true;
@@ -113,7 +102,6 @@ document.addEventListener("DOMContentLoaded", () => {
       btnSeleccionado.classList.add("incorrecta");
     }
 
-    // Pasar a la siguiente después de 1.2s
     setTimeout(() => {
       indiceActual++;
       if (indiceActual < preguntas.length) {
@@ -124,20 +112,17 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 1200);
   }
 
-  // --- MOSTRAR RESULTADO ---
   function mostrarResultado() {
     const total = preguntas.length;
     const porcentaje = Math.round((puntuacion / total) * 100);
 
     barraFill.style.width = "100%";
 
-    // Guardar récord en localStorage
     const recordAnterior = parseInt(localStorage.getItem("recordQuiz") || "0");
     if (puntuacion > recordAnterior) {
       localStorage.setItem("recordQuiz", puntuacion.toString());
     }
 
-    // Mensaje según resultado
     let titulo, texto;
     if (porcentaje >= 80) {
       titulo = "🏆 ¡Excelente!";
@@ -157,7 +142,6 @@ document.addEventListener("DOMContentLoaded", () => {
     mostrar(pantallaResultado);
   }
 
-  // --- EVENTOS ---
   btnIniciar.addEventListener("click", () => {
     const cantidad = parseInt(numPreguntasSelect.value);
     cargarPreguntas(cantidad);
