@@ -11,7 +11,6 @@
         window.location.href = "acceso.html";
       }
     </script>
-    
 </head>
 <body>
   <div class="overlay"></div>
@@ -20,14 +19,59 @@
     <h1>Quiz</h1>
   </header>
   <main>
-    <section class="intro">
+    <section class="intro" id="pantalla-inicio">
       <h2>Demuestra tus conocimientos</h2>
-      <p>Responde preguntas con diferentes dificultades</p>
-      <button>Comenzar Quiz</button>
+      <p>Preguntas de videojuegos en inglés · Dificultad mixta</p>
+      <div class="opciones-quiz">
+        <label for="num-preguntas">Número de preguntas:</label>
+        <select id="num-preguntas">
+          <option value="5">5</option>
+          <option value="10" selected>10</option>
+          <option value="15">15</option>
+        </select>
+      </div>
+      <button id="btn-iniciar">Comenzar Quiz</button>
+    </section>
+
+    <section class="quiz-box hidden" id="pantalla-quiz">
+      <div class="quiz-header">
+        <span id="progreso">Pregunta 1 de 10</span>
+        <span id="puntuacion-live">✅ 0</span>
+      </div>
+      <div class="barra-progreso">
+        <div class="barra-fill" id="barra-fill"></div>
+      </div>
+      <div id="pregunta-texto" class="pregunta"></div>
+      <div id="respuestas" class="respuestas"></div>
+    </section>
+
+    <section class="resultado-box hidden" id="pantalla-resultado">
+      <h2 id="resultado-titulo"></h2>
+      <p id="resultado-texto"></p>
+      <div class="resultado-score">
+        <span id="resultado-score"></span>
+      </div>
+      <div class="botones-resultado">
+        <button id="btn-reintentar">Jugar de nuevo</button>
+        <a href="index.html" class="btn-volver-portal">Volver al portal</a>
+      </div>
+    </section>
+
+    <section class="cargando hidden" id="pantalla-carga">
+      <div class="spinner"></div>
+      <p>Cargando preguntas...</p>
+    </section>
+
+    <section class="error-box hidden" id="pantalla-error">
+      <h2>⚠️ Error al cargar</h2>
+      <p>No se pudieron obtener las preguntas. Comprueba tu conexión.</p>
+      <button id="btn-reintentar-error">Reintentar</button>
     </section>
   </main>
   <footer>
     <p>© 2025 Portal IRB</p>
   </footer>
+
+  <script src="js/quiz.js"></script>
 </body>
 </html>

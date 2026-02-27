@@ -16,61 +16,176 @@ body {
   position: fixed;
   top: 0; left: 0;
   width: 100%; height: 100%;
-  background: rgba(0,0,0,0.6);
+  background: rgba(0, 0, 0, 0.6);
   z-index: -1;
 }
 
 header {
   text-align: center;
   padding: 20px;
-  background: rgba(44,44,44,0.8);
+  background: rgba(44, 44, 44, 0.8);
 }
 
 .volver {
   color: #00ffff;
   text-decoration: none;
   font-weight: bold;
+  display: inline-block;
+  margin-bottom: 6px;
 }
 
 .volver:hover { text-decoration: underline; }
 
-h1 { font-size: 26px; color: #ffd700; }
+h1 { font-size: 26px; color: #ffd700; margin: 4px 0 0; }
 
 main {
   flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 40px 20px 60px;
+  padding: 40px 20px 80px;
 }
 
 .intro {
-  background: rgba(30,30,30,0.85);
-  padding: 40px;
+  background: rgba(30, 30, 30, 0.88);
+  padding: 40px 35px;
   border-radius: 20px;
-  max-width: 600px;
+  max-width: 560px;
   width: 100%;
   text-align: center;
-  box-shadow: 0 0 20px rgba(255,215,0,0.3);
+  box-shadow: 0 0 25px rgba(0, 255, 255, 0.2);
+}
+
+.intro h2 {
+  font-size: 20px;
+  color: #ffd700;
+  margin-bottom: 6px;
+}
+
+.subtitulo {
+  font-size: 13px;
+  color: #aaa;
+  margin-bottom: 28px;
+}
+
+.stats-row {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+.stat-box {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  padding: 14px 20px;
+  min-width: 110px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  transition: border-color 0.3s;
+}
+
+.stat-box:hover { border-color: #00ffff44; }
+
+.record-box {
+  border-color: rgba(255, 215, 0, 0.3);
+  box-shadow: 0 0 12px rgba(255, 215, 0, 0.1);
+}
+
+.stat-label {
+  font-size: 10px;
+  color: #888;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.stat-valor {
+  font-size: 28px;
+  color: #00ffff;
+  font-weight: bold;
+  line-height: 1;
+  transition: transform 0.1s ease;
+}
+
+.record-box .stat-valor { color: #ffd700; }
+
+.mando-wrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
 }
 
 .avatar {
   width: 160px;
-  margin: 20px 0;
   cursor: pointer;
-  transition: transform 0.2s ease, filter 0.2s ease;
+  transition: filter 0.15s ease;
+  user-select: none;
+  -webkit-user-drag: none;
 }
 
 .avatar:hover {
-  transform: scale(1.06);
-  filter: brightness(1.1);
+  filter: brightness(1.15) drop-shadow(0 0 10px #00ffff88);
 }
 
-.contador {
-  font-size: 20px;
-  margin-top: 20px;
-  color: #00ffff;
+@keyframes clickBounce {
+  0%   { transform: scale(1); filter: brightness(1); }
+  30%  { transform: scale(0.88); filter: brightness(1.4) drop-shadow(0 0 14px #00ffff); }
+  60%  { transform: scale(1.08); filter: brightness(1.2) drop-shadow(0 0 8px #1e90ff); }
+  100% { transform: scale(1); filter: brightness(1); }
+}
+
+.avatar.click-anim {
+  animation: clickBounce 0.22s ease;
+}
+
+.particula {
+  position: fixed;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 14px;
   font-weight: bold;
+  color: #00ffff;
+  pointer-events: none;
+  z-index: 999;
+  animation: subirParticula 0.8s ease forwards;
+}
+
+@keyframes subirParticula {
+  0%   { opacity: 1; transform: translateY(0) scale(1); }
+  100% { opacity: 0; transform: translateY(-60px) scale(0.7); }
+}
+
+.mensaje-record {
+  background: linear-gradient(135deg, rgba(255,215,0,0.2), rgba(255,140,0,0.2));
+  border: 1px solid #ffd700;
+  color: #ffd700;
+  font-size: 15px;
+  padding: 12px 24px;
+  border-radius: 12px;
+  margin: 0 auto 16px;
+  display: inline-block;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+}
+
+.mensaje-record.hidden { display: none; }
+
+@keyframes aparecer {
+  0%   { opacity: 0; transform: scale(0.8) translateY(10px); }
+  50%  { opacity: 1; transform: scale(1.05) translateY(0); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+.mensaje-record.show {
+  animation: aparecer 0.4s ease forwards;
+}
+
+.hint {
+  font-size: 11px;
+  color: #555;
+  margin-top: 8px;
 }
 
 footer {
@@ -78,8 +193,15 @@ footer {
   bottom: 0; left: 0;
   width: 100%;
   text-align: center;
-  background: rgba(44,44,44,0.8);
+  background: rgba(44, 44, 44, 0.8);
   padding: 12px 0;
   font-size: 14px;
   color: #ccc;
+}
+
+@media (max-width: 400px) {
+  .stats-row { gap: 10px; }
+  .stat-box { min-width: 85px; padding: 10px 12px; }
+  .stat-valor { font-size: 22px; }
+  .avatar { width: 130px; }
 }

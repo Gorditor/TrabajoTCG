@@ -11,7 +11,6 @@
         window.location.href = "acceso.html";
       }
     </script>
-    
 </head>
 <body>
   <div class="overlay"></div>
@@ -19,18 +18,61 @@
     <a href="index.html" class="volver">← Volver al portal</a>
     <h1>Generador de Personajes</h1>
   </header>
+
   <main>
-    <section class="intro">
-      <h2>Tu héroe personalizado</h2>
-      <img src="imgs/personaje.png" alt="Personaje" class="avatar">
-      <p>Fuerza: ---</p>
-      <p>Magia: ---</p>
-      <p>Velocidad: ---</p>
-      <button>Generar personaje</button>
+    <!-- PANTALLA: Personaje guardado -->
+    <section class="panel hidden" id="pantalla-guardado">
+      <h2>Tu personaje</h2>
+      <div class="personaje-guardado">
+        <div class="clase-icon" id="guardado-emoji"></div>
+        <div class="guardado-info">
+          <p class="guardado-nombre" id="guardado-nombre"></p>
+          <p class="guardado-clase" id="guardado-clase"></p>
+        </div>
+      </div>
+      <div class="stats-guardado" id="stats-guardado"></div>
+      <div class="botones-fila">
+        <button id="btn-nuevo">Crear nuevo personaje</button>
+      </div>
+    </section>
+
+    <!-- PANTALLA: Selector de clase -->
+    <section class="panel" id="pantalla-clase">
+      <h2>Elige tu clase</h2>
+      <p class="subtitulo">Cada clase tiene atributos base distintos</p>
+      <div class="clases-grid" id="clases-grid"></div>
+    </section>
+
+    <!-- PANTALLA: Personalizar stats -->
+    <section class="panel hidden" id="pantalla-stats">
+      <div class="clase-seleccionada-header">
+        <span id="clase-emoji-header"></span>
+        <span id="clase-nombre-header"></span>
+      </div>
+      <h2>Personaliza tu héroe</h2>
+
+      <div class="nombre-input-wrap">
+        <label for="nombre-personaje">Nombre del personaje</label>
+        <input type="text" id="nombre-personaje" placeholder="Escribe un nombre..." maxlength="20">
+      </div>
+
+      <div class="puntos-restantes">
+        Puntos extra disponibles: <span id="puntos-display">10</span>
+      </div>
+
+      <div class="stats-editor" id="stats-editor"></div>
+
+      <div class="botones-fila">
+        <button class="btn-secundario" id="btn-volver-clase">← Cambiar clase</button>
+        <button id="btn-guardar">Guardar personaje</button>
+      </div>
     </section>
   </main>
+
   <footer>
     <p>© 2025 Portal IRB</p>
   </footer>
+
+  <script src="js/personaje.js"></script>
 </body>
 </html>
